@@ -1,5 +1,19 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    hello
+<div class="mx-auto md:w-2/3 w-full grid grid-cols-2 gap-4">
+  <div class="col-span-2 md:col-span-1 border rounded-lg shadow-lg">
+    <%= form_with url: breeds_path, method: :patch, class: "flex flex-col h-full p-6 justify-center" do |form| %>
+      <%= form.label :breed, "Breed:", class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <div class="mt-2">
+        <%= form.select :breed, BREEDS_DATA.map{|breed| [breed.gsub(/\//, " ").humanize, breed] },{}, {class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"} %>
+      </div>
+      <%= form.submit "Submit", class: "border py-1.5 mt-3 rounded hover:bg-gray-400 hover:cursor-pointer" %>
+    <% end %>
+  </div>
+  <div class="col-span-2 md:col-span-1 border rounded-lg shadow-lg relative overflow-clip h-[20rem]">
+    <div class="absolute inset-0 bg-gray-400 animate-pulse"></div>
+    <div class="absolute inset-0">
+      <%= turbo_frame_tag "dog-image" do %>
+        <%= render partial: "breeds/dog-image", locals: { url: "https://images.dog.ceo/breeds/beagle/n02088364_10947.jpg" } %>
+      <% end %>
+    </div>
   </div>
 </div>
