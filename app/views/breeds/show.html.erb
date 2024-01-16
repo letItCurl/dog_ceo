@@ -8,10 +8,7 @@
       <%= form.submit "Submit", class: "border py-1.5 mt-3 rounded hover:bg-gray-300 hover:cursor-pointer hover:text-gray-500" %>
     <% end %>
   </div>
-  <div class="col-span-2 md:col-span-1 border rounded-lg shadow-lg relative overflow-clip h-[20rem]">
-    <div class="absolute inset-0 bg-gray-400 animate-pulse"></div>
-    <div class="absolute inset-0">
-      <%= render partial: "breeds/dog-image", locals: { url: "https://images.dog.ceo/breeds/affenpinscher/n02110627_1844.jpg" } %>
-    </div>
+  <div class="col-span-2 md:col-span-1 rounded-lg relative overflow-clip h-[20rem]">
+    <%= render partial: "breeds/dog-image", locals: { url: "https://images.dog.ceo/breeds/affenpinscher/n02110627_1844.jpg" } %>
   </div>
 </div>
