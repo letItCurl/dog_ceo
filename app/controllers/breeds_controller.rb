@@ -3,6 +3,8 @@ class BreedsController < ApplicationController
   end
 
   def update
-    render turbo_stream: turbo_stream.replace("dog-image", partial: "breeds/dog-image", locals: { url: "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_6338.jpg" })
+    response = Faraday.get("https://dog.ceo/api/breed/#{params["breed"]}/images/random")
+    url = JSON.parse(response.body)["message"]
+    render turbo_stream: turbo_stream.replace("dog-image", partial: "breeds/dog-image", locals: { url: url })
   end
 end
